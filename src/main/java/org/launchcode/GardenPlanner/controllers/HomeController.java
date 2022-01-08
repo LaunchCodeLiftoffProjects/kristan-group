@@ -33,6 +33,19 @@ public class HomeController {
         return "add";
     }
 
+    @GetMapping("view/{plantId}")
+    public String displayViewPlant(Model model, @PathVariable int plantId) {
+
+        Optional optPlant = plantRepository.findById(plantId);
+        if (optPlant.isPresent()) {
+            Plant plant = (Plant) optPlant.get();
+            model.addAttribute("plant", plant);
+            return "view";
+        } else {
+            return "redirect:../";
+        }
+    }
+
 
 
 }
