@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container  body-content">
+<h1>Add Requirements</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Name that Requirement!</label>
+        <input class="form-control" th:field="${requirement.name}" />
+        <span th:errors="${requirement.name}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Requirement Sun Needs</label>
+        <input class="form-control" th:field="${requirement.sun}" />
+        <span th:errors="${requirement.sun}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Requirement Idea Climate</label>
+        <input class="form-control" th:field="${requirement.climate}" />
+        <span th:errors="${requirement.climate}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Requirements of Space</label>
+        <input class="form-control" th:field="${requirement.space}" />
+        <span th:errors="${requirement.space}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add the Requirements!" />
+</form>
+
+</body>
+</html>
