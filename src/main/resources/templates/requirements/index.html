@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${requirements} and ${requirements.size()}">There are no Requirements here</p>
+
+<div class="container body-content">
+    <h2>Requirements</h2>
+    <ul>
+        <li th:each="requirement : ${requirements}">
+            <a th:href="@{'/requirements/view/' + ${requirement.id}}" th:text="${requirement.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/requirements/add'}">Add some Requirements!</a>
+
+</div>
+
+</body>
+</html>
