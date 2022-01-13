@@ -11,6 +11,9 @@ import java.util.ArrayList;
 public class PlantData {
 
 
+    private static String value;
+    private static Iterable<Plant> allPlants;
+
     /**
      * Returns the results of searching the PlantS data by field and search term.
      *
@@ -67,6 +70,8 @@ public class PlantData {
      * @return      List of all plantS with at least one field containing the value.
      */
     public static ArrayList<Plant> findByValue(String value, Iterable<Plant> allPlants) {
+        PlantData.value = value;
+        PlantData.allPlants = allPlants;
         String lower_val = value.toLowerCase();
 
         ArrayList<Plant> results = new ArrayList<>();
