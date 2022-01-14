@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container  body-content">
+<h1 th:text="${'PlantType: ' + plantType.name}">Plant types!</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="plant-listing">
+    <p th:text="${'Name: ' + plantType.name}"></p>
+    <p th:text="${'Size: ' + plantType.size}"></p>
+</div>
+
+
+</body>
+</html>

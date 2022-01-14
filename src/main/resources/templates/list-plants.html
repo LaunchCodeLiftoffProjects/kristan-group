@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <table class="plant-listing">
+        <tr th:each="plant : ${[plants]}">
+            <td>
+                <p>
+                    Plant Id:
+                    <a th:href="@{'/view/' + ${plant.id}}" th:text="${plant.id}"></a>
+                </p>
+                <p th:text="${'Name: ' + plant.name}"></p>
+                <p>
+                    Plant Information:
+                    <a th:href="@{'/plantTypes/view/' + ${plant.plantType.id}}" th:text="${plant.plantType.name}"></a>
+                </p>
+                <p>
+                    Requirements:
+                <ul th:each="requirement : ${plant.requirements}">
+                    <li>
+                        <a th:href="@{'/requirements/view/' + ${PlantRequirement.id}}" th:text="${PlantRequirement.name}"></a>
+                    </li>
+                </ul>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

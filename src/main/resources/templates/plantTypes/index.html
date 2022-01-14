@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${plantTypes} and ${plantTypes.size()}">Sorry No Plants</p>
+
+<h2>Plant Types</h2>
+<ul>
+    <li th:each="plantType : ${plantTypes}">
+        <a th:href="{'/plantTypes/view/' + ${plantType.id}" th:text="${plantType.name}"></a>
+    </li>
+</ul>
+
+<a th:href="@{'/plantTypes/add}">Add more Plant Information!</a>
+</body>
+</html>

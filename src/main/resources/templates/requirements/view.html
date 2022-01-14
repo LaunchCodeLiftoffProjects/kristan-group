@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container  body-content">
+<h1 th:text="${'requirement: ' + PlantRequirement.name}">Check out these RAD requirements</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="plant-listing">
+    <p th:text="${'Name: ' + PlantRequirement.name}"></p>
+    <p th:text="${'Ideal Climate: ' + PlantRequirement.climate}"></p>
+    <p th:text="${'Sun Needs: ' + PlantRequirement.sun}"></p>
+    <p th:text="${'Space Needs: ' + PlantRequirement.space}"></p>
+    <p> Plants:
+    <ul>
+        <li th:each="plant : ${PlantRequirement.plants}">
+            <a th:href="@{'/view/' + ${plant.id}}" th:text="${plant.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>
