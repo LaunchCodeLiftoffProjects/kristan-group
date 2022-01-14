@@ -25,9 +25,9 @@
     </div>
 
     <div class="form-group">
-        <label th:for="requirements">Requirements</label>
-        <th:block th:each="requirement : ${requirements}">
-            <input type="checkbox" name="requirements" th:value="${requirement.id}">
+        <label th:for="requirement">Requirements</label>
+        <th:block th:each="requirement : ${PlantRequirement}">
+            <input type="checkbox" name="requirement" th:value="${PlantRequirement.id}">
             <label th:text="${requirement.name}"></label>
         </th:block>
         <a th:href="@{'/requirements/add'}">Add Requirements</a>
