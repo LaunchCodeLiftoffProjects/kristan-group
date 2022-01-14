@@ -9,7 +9,7 @@
 <div class="container body-content">
     <h2>GardenPlanner</h2>
     <ul>
-        <li th:each="plant : ${plants}">
+        <li th:each="plants : ${plant}">
             <a th:href="@{'/view/' + ${plant.id}}" th:text="${plant.name}">list of plants</a>
         </li>
     </ul>

@@ -31,7 +31,7 @@
         </td>
         <td>
             <li th:each="requirement : ${requirements}">
-                <a th:href="@{/list/plants(column=requirement,value=${requirement.name})}" th:text="${requirement.name}"></a>
+                <a th:href="@{/list/plants(column=requirement,value=${PlantRequirement.name})}" th:text="${PlantRequirement.name}"></a>
             </li>
         </td>
     </tr>
