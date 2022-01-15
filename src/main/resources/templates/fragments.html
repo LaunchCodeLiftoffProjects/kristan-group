@@ -12,13 +12,16 @@
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top" style="background-color: #b4baad; ">
     <div class="container">
         <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">GardenPlanner</a>
+            <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/images/herblogotxt.png}" alt="Garden Planner Logo" width="75" height="75">
+            </a>
+
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/list}">List</a></li>
                 <li><a th:href="@{/search}">Search</a></li>
                 <li><a th:href="@{/add}">Add</a></li>
