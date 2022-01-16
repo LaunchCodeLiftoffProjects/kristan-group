@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("plants")
 public class HomeController {
 
     @Autowired
@@ -66,7 +65,7 @@ public class HomeController {
         List<PlantRequirement> reqObjs = (List<PlantRequirement>) plantRequirementRepository.findAllById(requirements);
         newPlant.setPlantRequirements(reqObjs);
         plantRepository.save(newPlant);
-        model.addAttribute("jobs", plantRepository.findAll());
+        model.addAttribute("plants", plantRepository.findAll());
         return "redirect:";
     }
 
