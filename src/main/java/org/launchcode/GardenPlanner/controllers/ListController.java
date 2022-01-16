@@ -37,5 +37,20 @@ public class ListController {
         return "list";
     }
 
+    @RequestMapping(value = "plants")
+    public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+        Iterable<Plant> plants;
+        if (column.toLowerCase().equals("all")){
+            plants = plantRepository.findAll();
+            model.addAttribute("title", "All Plants");
+        } else {
+            plants = PlantData.findByColumnAndValue(column, value, plantRepository.findAll());
+            model.addAttribute("title", "Plants with " + columnChoices.get(column) + ": " + value);
+        }
+        model.addAttribute("plants", plants);
+
+        return "list-plants";
+    }
+
 
 }

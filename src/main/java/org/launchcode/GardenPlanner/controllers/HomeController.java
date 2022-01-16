@@ -42,7 +42,8 @@ public class HomeController {
     @GetMapping("add")
     public String displayAddPlantForm(Model model) {
         model.addAttribute("title", "Add Plant");
-        model.addAttribute("plants", plantRepository.findAll());
+        model.addAttribute("plantTypes", plantTypeRepository.findAll());
+        model.addAttribute("PlantRequirement", plantRequirementRepository.findAll());
         model.addAttribute(new Plant());
         return "add";
     }
