@@ -1,11 +1,14 @@
 package org.launchcode.GardenPlanner.controllers;
 
 import org.launchcode.GardenPlanner.models.Plant;
+import org.launchcode.GardenPlanner.models.PlantType;
+import org.launchcode.GardenPlanner.models.PlantTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import org.launchcode.GardenPlanner.models.PlantRepository;
@@ -34,7 +37,7 @@ public class HomeController {
     }
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute /*@Valid*/ Plant newPlant,
+    public String processAddJobForm(@ModelAttribute @Valid Plant newPlant,
                                     Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
@@ -42,11 +45,11 @@ public class HomeController {
             return "add";
         }
 
-//        Optional<Employer> optPlantType = employerRepository.findById(employerId);
-//        if (optEmployer.isPresent()) {
-//            Employer employer = optEmployer.get();
-//            newPlant.setEmployer(employer);
-//        }
+        Optional<PlantType> optPlantType = PlantTypeRepository.findById(employerId);
+        if (optPlantType.isPresent()) {
+            PlantType plantType = optPlantType.get();
+            newPlant.setPlantType(plantType);
+        }
 
 //        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
 //        newPlant.setSkills(skillObjs);
