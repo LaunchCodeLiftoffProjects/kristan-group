@@ -20,8 +20,8 @@ public class HomeController {
     @Autowired
     private PlantTypeRepository plantTypeRepository;
 
-    //@Autowired
-    //private SkillRepository skillRepository;
+    @Autowired
+    private PlantRequirementRepository plantRequirementRepository;
 
 
 
@@ -56,10 +56,10 @@ public class HomeController {
             newPlant.setPlantType(plantType);
         }
 
-        List<PlantRequirement> skillObjs = (List<PlantRequirement>) skillRepository.findAllById(skills);
-        newPlant.setSkills(skillObjs);
-        jobRepository.save(newPlant);
-        model.addAttribute("jobs", jobRepository.findAll());
+        List<PlantRequirement> reqObjs = (List<PlantRequirement>) plantRequirementRepository.findAllById(requirements);
+        newPlant.setPlantRequirements(reqObjs);
+        plantRepository.save(newPlant);
+        model.addAttribute("jobs", plantRepository.findAll());
         return "redirect:";
     }
 
