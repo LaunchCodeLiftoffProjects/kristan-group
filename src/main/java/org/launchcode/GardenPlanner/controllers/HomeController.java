@@ -1,8 +1,6 @@
 package org.launchcode.GardenPlanner.controllers;
 
-import org.launchcode.GardenPlanner.models.Plant;
-import org.launchcode.GardenPlanner.models.PlantType;
-import org.launchcode.GardenPlanner.models.PlantTypeRepository;
+import org.launchcode.GardenPlanner.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import org.launchcode.GardenPlanner.models.PlantRepository;
 
 @Controller
 @RequestMapping("plants")
@@ -19,6 +16,14 @@ public class HomeController {
 
     @Autowired
     private PlantRepository plantRepository;
+
+    @Autowired
+    private PlantTypeRepository plantTypeRepository;
+
+    //@Autowired
+    //private SkillRepository skillRepository;
+
+
 
     @RequestMapping("")
     public String index(Model model) {
@@ -38,23 +43,23 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Plant newPlant,
-                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
+                                    Errors errors, Model model, @RequestParam int plantTypeId, @RequestParam List<Integer> requirements) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
             return "add";
         }
 
-        Optional<PlantType> optPlantType = PlantTypeRepository.findById(employerId);
+        Optional<PlantType> optPlantType = plantTypeRepository.findById(plantTypeId);
         if (optPlantType.isPresent()) {
             PlantType plantType = optPlantType.get();
             newPlant.setPlantType(plantType);
         }
 
-//        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-//        newPlant.setSkills(skillObjs);
-//        jobRepository.save(newPlant);
-//        model.addAttribute("jobs", jobRepository.findAll());
+        List<PlantRequirement> skillObjs = (List<PlantRequirement>) skillRepository.findAllById(skills);
+        newPlant.setSkills(skillObjs);
+        jobRepository.save(newPlant);
+        model.addAttribute("jobs", jobRepository.findAll());
         return "redirect:";
     }
 
