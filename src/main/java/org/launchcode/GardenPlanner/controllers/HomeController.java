@@ -23,7 +23,14 @@ public class HomeController {
     @Autowired
     private PlantRequirementRepository plantRequirementRepository;
 
-
+//    @GetMapping("")
+//    public String addPlantData (Model model, Plant plant) {
+//
+//        model.addAttribute("plants", plantRepository.findAll());
+//
+//
+//        return "index";
+//    }
 
     @RequestMapping("")
     public String index(Model model) {
@@ -34,7 +41,7 @@ public class HomeController {
     }
 
     @GetMapping("add")
-    public String displayAddJobForm(Model model) {
+    public String displayAddPlantForm(Model model) {
         model.addAttribute("title", "Add Plant");
         model.addAttribute("plants", plantRepository.findAll());
         model.addAttribute(new Plant());
@@ -42,7 +49,7 @@ public class HomeController {
     }
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute @Valid Plant newPlant,
+    public String processAddPlantForm(@ModelAttribute @Valid Plant newPlant,
                                     Errors errors, Model model, @RequestParam int plantTypeId, @RequestParam List<Integer> requirements) {
 
         if (errors.hasErrors()) {
