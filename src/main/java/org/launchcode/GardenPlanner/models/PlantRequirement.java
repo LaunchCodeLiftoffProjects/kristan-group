@@ -24,6 +24,7 @@ public class PlantRequirement extends AbstractEntity {
 
     public PlantRequirement(){}
 
+
     public String getDescription() {
         return description;
     }
