@@ -15,7 +15,7 @@ public class PlantRequirement extends AbstractEntity {
     //@NotNull(message = "plantRequirements is required")
     private final List<Plant> plants = new ArrayList<>();
 
-    // @Size(max=500, message = "Description can be as long as necessary ")
+    //@Size(max=500, message = "Description can be as long as necessary ")
     private  String description;
 
     public PlantRequirement(){}
