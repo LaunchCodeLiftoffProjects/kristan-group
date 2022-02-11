@@ -35,7 +35,7 @@ public class SearchController {
             plants = PlantData.findByColumnAndValue(searchType, searchTerm, plantRepository.findAll());
         }
         model.addAttribute("columns", columnChoices);
-        model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
+        model.addAttribute("title", "Plants with... " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("plants", plants);
 
         return "search";
